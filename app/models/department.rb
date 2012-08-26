@@ -4,4 +4,5 @@ class Department
 
   field :name, :type => String
   has_many :majors
+  has_many :students
 end

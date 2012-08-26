@@ -7,4 +7,5 @@ class Question
   has_many :answers
   belongs_to :course
   belongs_to :user
+
 end
