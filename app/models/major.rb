@@ -9,4 +9,5 @@ class Major
   def find_all_related_questions
     courses.map(&:questions).flatten
   end
+
 end

@@ -3,6 +3,8 @@ class Question
   include Mongoid::Timestamps
   field :title, :type => String
   field :content, :type => String
+
   has_many :answers
   belongs_to :course
+  belongs_to :user
 end
