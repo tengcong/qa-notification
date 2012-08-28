@@ -1,7 +1,10 @@
 class QuestionsController < ApplicationController
 
   def create
-    Question.create params[:question]
+    question = Question.create params[:question]
+    user = User.find params[:user_id]
+    user.add_asked_questions question
+
     render :nothing => true
   end
 
