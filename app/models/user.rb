@@ -5,7 +5,7 @@ class User
   has_many :asked_questions, :class_name => "Question"
   has_and_belongs_to_many :courses
   has_many :answers
-
+  has_many :notices
 
   def lastest_question_of_my_courses
     desc_list_by_updated_at courses.map(&:questions).flatten
