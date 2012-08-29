@@ -20,12 +20,10 @@ describe QuestionsController do
   end
 
   describe "POST create" do
-    it "should call create method" do
+    before(:each) do
       post :create, :question => @parameters, :user_id => @user.id
     end
-
     it "should create questions with user_id and course_id" do
-      post :create, :question => @parameters, :user_id => @user.id
       # 4.test the result
       question = Question.where(:title => 'test').last
       question.should_not be_nil
@@ -34,6 +32,7 @@ describe QuestionsController do
 
       @user.asked_questions.should be_include question
     end
+
   end
 
   describe "GET index" do
