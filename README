@@ -36,3 +36,4 @@ with things above, we can break them into 2 parts:
 
 to-do list:
 1. change global methdo to monkey patch Array method in initialize files( try find why doesn't work last time )
+2. list all notifications of user( this may cost some time )
