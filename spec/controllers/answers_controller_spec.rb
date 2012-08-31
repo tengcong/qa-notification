@@ -22,4 +22,43 @@ describe AnswersController do
    end
 
  end
+
+ describe "DELETE destroy" do
+   it "should destroy the corresponding answer" do
+    question = Question.create :title => "question title",:content => "question content"
+    answer = Answer.create :content => "answer content",  :question_id => question.id
+
+    question.answers.should_not be_empty
+
+    question.answers.should be_include answer
+
+    delete :destroy, :question_id => question.id, :id => answer.id
+
+    question.reload
+
+    question.answers.should_not be_include answer
+
+    end
+ end
+
+ describe "PUT update" do
+  it "should update the corresponding answer"  do
+    question = Question.create :title => "question title",:content => "question content"
+    answer = Answer.create :content => "answer content",  :question_id => question.id
+    question.answers.should_not be_empty
+
+    question.answers.should be_include answer
+
+    new_content = "new content"
+
+    origin_updated_at = answer.updated_at
+    sleep 1.2
+
+    put :update, :question_id => question.id, :id => answer.id, :answer => {:content => new_content}
+
+    answer.reload.content.should == new_content
+
+    answer.updated_at.should > origin_updated_at
+  end
+ end
 end
