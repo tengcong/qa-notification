@@ -9,5 +9,10 @@ class Answer
 
   def add_association_to_question question_id
     question = Question.find question_id
+    save
+  end
+
+  def find_related_question_owner
+    self.question.user
   end
 end
