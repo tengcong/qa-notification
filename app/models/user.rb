@@ -13,13 +13,13 @@ class User
   end
 
   def add_asked_questions question
-    asked_questions << question
+    self.asked_questions << question
     save
   end
 
   def add_new_notice notice
-    notices << notice
-    save
+    self.notices << notice
+    self.save
   end
 
 end

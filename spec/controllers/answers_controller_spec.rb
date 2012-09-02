@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe AnswersController do
 
-
   describe "POST create" do
 
     before(:each) do
@@ -16,7 +15,7 @@ describe AnswersController do
 
     end
     it "should create answers with question_id and user_id" do
-      post :create, :user_id => @answerer.id, :question_id => @question.id, :content => "answer content"
+      post :create, :question_id => @question.id, :answer => {:content => "answer content", :user_id => @answerer.id}
       answer = Answer.where(:content => "answer content").last
       answer.should_not be_nil
       answer.user.id.should == @answerer.id
@@ -27,17 +26,18 @@ describe AnswersController do
     it "should create a notification to questions's ower" do
       origin_notices = @asker.notices
       origin_notices_size = origin_notices.size
-      post :create, :user_id => @answerer.id, :question_id => @question.id, :content => "answer content"
+      post :create, :question_id => @question.id, :answer => {:content => "answer content", :user_id => @answerer.id}
 
       @asker.reload
       new_notices = @asker.notices
+
       new_notices.size.should == (origin_notices_size + 1)
 
       notice = new_notices.last
-
       notice.notice_type.should == "question"
-      notice.content.should == @question.id.to_s
-      notice.read.should == false
+
+      notice.content.should == "answer content"
+      notice.ref_id.should == @question.id.to_s
     end
  end
 
@@ -70,6 +70,7 @@ describe AnswersController do
       User.where(:name => "kingkong").first.should_not be_nil
       Question.where(:title => "question title").first.should_not be_nil
   end
+
   it "should update the corresponding answer and create a notification to question owner" do
     answer = Answer.create :user_id => @answerer.id, :content => "answer content",  :question_id => @question.id
     @question.answers.should_not be_empty
@@ -88,6 +89,7 @@ describe AnswersController do
     answer.updated_at.should > origin_updated_at
 
   end
+
   it "should create a notification to questions's ower" do
       answer = Answer.create :user_id => @answerer.id, :content => "answer content",  :question_id => @question.id
 
@@ -104,8 +106,8 @@ describe AnswersController do
       notice = new_notices.last
 
       notice.notice_type.should == "question"
-      notice.content.should == @question.id.to_s
-      notice.read.should == false
+      notice.content.should == "new_content"
+      notice.ref_id.should == @question.id.to_s
   end
  end
 end

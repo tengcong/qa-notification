@@ -8,7 +8,7 @@ class Answer
   belongs_to :user
 
   def add_association_to_question question_id
-    question = Question.find question_id
+    self.question = Question.find question_id
     save
   end
 
