@@ -37,12 +37,25 @@ with things above, we can break them into 2 parts:
 to-do list:
 1. change global methdo to monkey patch Array method in initialize files( try find why doesn't work last time )
 
-
 8.29:
 
 notice model
-  -quesions's owner will receive a notice when a answer created
+- quesions's owner will receive a notice when a answer created
+    ..... -messages in this site
 
-                      ..... -messages in this site
+9.2:
+- list all notifications of user( this may cost some time )
+- finish notification part
 
-        2. list all notifications of user( this may cost some time )
+
+Notice{
+  title: String
+  notice_type: String
+  content: String
+  url: String
+
+  author: User
+
+  created_at: Time
+  updated_at: Time
+}
