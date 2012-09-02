@@ -47,15 +47,3 @@ notice model
 - list all notifications of user( this may cost some time )
 - finish notification part
 
-
-Notice{
-  title: String
-  notice_type: String
-  content: String
-  url: String
-
-  author: User
-
-  created_at: Time
-  updated_at: Time
-}
