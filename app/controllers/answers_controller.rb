@@ -20,9 +20,13 @@ class AnswersController < ApplicationController
 
 
   def update
+    question = Question.find params[:question_id]
     answer = Answer.find params[:id]
     answer.content = params[:answer][:content]
     answer.save
+    notice_attr = {:notice_type => "question", :content => params[:question_id]}
+    notice = Notice.generate_notice notice_attr
+    question.user.add_new_notice notice
     render :nothing => true
   end
 
