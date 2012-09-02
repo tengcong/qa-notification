@@ -15,4 +15,5 @@ class Answer
   def find_related_question_owner
     self.question.user
   end
+
 end
