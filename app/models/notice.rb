@@ -13,8 +13,7 @@ class Notice
   class << self
     def generate_notice attr, s, r
       notice = Notice.new attr
-      notice.sender = s
-      notice.user = r
+      notice.sender, notice.user = s, r
       notice
     end
   end
