@@ -6,7 +6,7 @@ class User
   has_and_belongs_to_many :courses
   has_many :answers
 
-  has_many :notices
+  has_many :notices, :inverse_of => :receiver
 
   def lastest_question_of_my_courses
     desc_list_by_updated_at courses.map(&:questions).flatten

@@ -18,7 +18,7 @@ describe Notice do
   describe ".generate_notice" do
     it "should generate right kind of notice with params" do
       @notice.sender.should == @sender
-      @notice.user.should == @receiver
+      @notice.receiver.should == @receiver
     end
   end
 
