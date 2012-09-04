@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 gem 'jquery-rails'
 gem "bson_ext", "= 1.6.4"
 gem "mongoid", "= 2.4.11"
+gem 'devise'
 
 group :test do
   gem "fakeweb"
