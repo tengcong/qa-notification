@@ -10,6 +10,8 @@ class Notice
   belongs_to :sender, :class_name => "User"
   belongs_to :receiver, :class_name => "User"
 
+  scope :sorted, desc(:updated_at)
+
   class << self
     def generate_notice attr, s, r
       notice = Notice.new attr

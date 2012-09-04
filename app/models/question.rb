@@ -9,4 +9,6 @@ class Question
   belongs_to :course
   belongs_to :user
 
+  scope :sorted, desc(:updated_at)
+
 end

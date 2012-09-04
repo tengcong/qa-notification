@@ -38,17 +38,26 @@ describe User do
 
   describe "#list_questions_notices" do
     before(:each) do
-      q1 = Question.create :user => @tommy
+      @q1 = Question.create :user => @tommy
+      sleep 1.0
+      @q2 = Question.create :user => @tommy
 
       user = User.create
-      answer = user.answers.build
-      answer.question = q1
-      answer.save
-      answer.create_related_notice
 
-      q1.answers = [answer]
-      q2 = Question.create
-      @tommy.asked_questions = [q1, q2]
+      answer1 = user.answers.build
+      answer1.question = @q1
+      answer1.save
+
+      answer2 = user.answers.build
+      answer2.question = @q2
+      answer2.save
+      answer2.create_related_notice
+      sleep 1.0
+      answer1.create_related_notice
+
+      @q1.answers = [answer1]
+      @q2.answers = [answer2]
+      @tommy.asked_questions = [@q1, @q2]
       @tommy.save
     end
     it "should return related questions" do
@@ -58,6 +67,11 @@ describe User do
       notices_questions.size.should == questions_with_answers.size
       (notices_questions - questions_with_answers).should == []
       (questions_with_answers - notices_questions).should == []
+    end
+
+    it "should return in right order" do
+      @tommy.asked_questions.sort_by(&:updated_at).should == [@q1, @q2]
+      @tommy.list_questions_notices.should == [@q1, @q2]
     end
   end
 end
