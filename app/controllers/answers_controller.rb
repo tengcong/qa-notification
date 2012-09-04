@@ -5,7 +5,6 @@ class AnswersController < ApplicationController
     answer.add_association_to_question params[:question_id]
 
     answer.create_related_notice params
-
     render :nothing => true
   end
 
