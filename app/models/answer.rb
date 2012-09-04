@@ -9,6 +9,8 @@ class Answer
 
   def add_association_to_question question_id
     self.question = Question.find question_id
+    self.question.updated_at = Time.now
+    self.question.save
     save
   end
 
@@ -20,17 +22,17 @@ class Answer
     self.user
   end
 
-  def create_related_notice attr
-    notice = create_answer_notice attr, answer_creater, find_related_question_owner
+  def create_related_notice
+    notice = create_answer_notice answer_creater, find_related_question_owner
     self.find_related_question_owner.add_new_notice notice
   end
 
   private
 
-  def create_answer_notice attr, sender, recevier
+  def create_answer_notice sender, recevier
     notice_attr = { :notice_type => "question",
-      :content => attr[:answer][:content],
-      :ref_id => attr[:question_id]
+      :content => self.content,
+      :ref_id => self.question.id
     }
     notice = Notice.generate_notice notice_attr, sender, recevier
     notice.save

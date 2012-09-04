@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
     answer = Answer.new params[:answer]
     answer.add_association_to_question params[:question_id]
 
-    answer.create_related_notice params
+    answer.create_related_notice
     render :nothing => true
   end
 
@@ -18,7 +18,7 @@ class AnswersController < ApplicationController
     answer = Answer.find params[:id]
     answer.update_attributes :content => params[:answer][:content]
 
-    answer.create_related_notice params
+    answer.create_related_notice
     render :nothing => true
   end
 
