@@ -47,3 +47,9 @@ notice model
 - list all notifications of user( this may cost some time )
 - finish notification part
 
+9.5
+almost finish above
+I think we should remove email part for so many reasons,
+and I can give a solution to that, We can build in-site message system,
+so if you want to send message to someone, just use the message system
+then get these all done before 9.12 as planed
