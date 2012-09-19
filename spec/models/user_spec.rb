@@ -71,7 +71,7 @@ describe User do
 
     it "should return in right order" do
       @tommy.asked_questions.sort_by(&:updated_at).should == [@q1, @q2]
-      @tommy.list_questions_notices.should == [@q1, @q2]
+      @tommy.list_questions_notices.should == [@q2, @q1]
     end
   end
 end
