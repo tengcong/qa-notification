@@ -1,7 +1,4 @@
-to 9.26
-there are 4 weeks left
 
-what we wanna do is list below:
 
 1> user(role) - questions - answers
     all related crud | tests stuff
@@ -14,42 +11,3 @@ what we wanna do is list below:
 4> about authentications stuff
 5> frontend stuff
 
-is there anything left? please add them below:
----------------------------------------------
-
----------------------------------------------
-
-with things above, we can break them into 2 parts:
--backend
-    1> finish 70% I think
-    2> we have this under control
-    so these 2 things we can have them all done before 9.4, ok? we can make a detail list here:
-
-    3> email 1-3 days, but I don't think it's a difficult thing
-    4> this maybe should take us more time, but we still can have this done before 9.12
-
-    so, we can have all these 4 points in 2 weeks
--frontends
-    2 weeks
-
-
-
-to-do list:
-1. change global methdo to monkey patch Array method in initialize files( try find why doesn't work last time )
-
-8.29:
-
-notice model
-- quesions's owner will receive a notice when a answer created
-    ..... -messages in this site
-
-9.2:
-- list all notifications of user( this may cost some time )
-- finish notification part
-
-9.5
-almost finish above
-I think we should remove email part for so many reasons,
-and I can give a solution to that, We can build in-site message system,
-so if you want to send message to someone, just use the message system
-then get these all done before 9.12 as planed
