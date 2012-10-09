@@ -8,6 +8,8 @@ gem 'devise'
 gem "twitter-bootstrap-rails"
 gem 'coffee-script'
 gem 'carrierwave'
+gem 'carrierwave-mongoid',:require => 'carrierwave/mongoid'
+gem 'mini_magick'
 
 gem 'sass-rails'
 group :test do

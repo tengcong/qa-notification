@@ -3,7 +3,13 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <label class="form-title" >Avatar</label>
+  <%= f.file_field :avatar , :class => "file-input"%>
+
   <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+    <div><%= f.label :department %><br />
   <%= f.email_field :email %></div>
 
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
