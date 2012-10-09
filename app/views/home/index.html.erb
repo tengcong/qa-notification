@@ -1,23 +1,22 @@
 <div class="container">
-  
+  <%= render 'askModel' %>
   <div class="span8">
-    asdasdasdasdasdads
-    <% @questions.each do |q| %>
-      <%= q.title %>
-    <% end -%>
+     <ul class="nav nav-tabs nav-stacked">
+      <% @questions.each do |q| %>
+        <li><a href=""><%= q.title %></a></li>
+      <% end -%>
+     </ul>
   </div>
 
   <div class="span3">
-    <ul class="nav nav-lists">
+    <ul class="nav nav-tabs nav-stacked">
     <% if user_signed_in? %>
-     <li><%= @current_user.name  %></li>
-     <li>asked_questions:<%= @current_user.asked_questions.count%></li>
-     <li>answers:<%= @current_user.answers.count%></li>
-     
-     
-
+     <li><a href=""><%= @current_user.name  %></a></li>
+     <li><a href=""><span class="user-info-h3">Asked:</span><%= @current_user.asked_questions.count%></a></li>
+     <li><a href=""><span class="user-info-h3">Answers:</span><%= @current_user.answers.count%></a></li>
+     <li><a href="#newQuestion" data-toggle="modal"><button class="btn btn-primary" type="button">Ask </button></a></li>
     <% end -%>
   </ul>
-  </div>
+
 
 </div>
