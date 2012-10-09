@@ -39,7 +39,7 @@ class User
 
   def add_new_notice notice
     self.notices << notice
-    self.save
+    save
   end
 
   def list_questions_notices

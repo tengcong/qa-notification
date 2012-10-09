@@ -16,7 +16,6 @@ describe QuestionsController do
         :content => "test_content",
         :course_id => @course.id,
       }
-
   end
 
   describe "POST create" do
