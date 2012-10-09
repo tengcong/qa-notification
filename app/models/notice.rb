@@ -7,6 +7,8 @@ class Notice
 
   field :ref_id, :type => String
 
+  field :unread, :type => Integer, :default => 1
+
   belongs_to :sender, :class_name => "User"
   belongs_to :receiver, :class_name => "User"
 
