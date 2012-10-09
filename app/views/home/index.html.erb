@@ -11,11 +11,70 @@
   <div class="span3">
     <ul class="nav nav-tabs nav-stacked">
     <% if user_signed_in? %>
-     <li><a href=""> <%= image_tag @current_user.avatar %> <%= @current_user.name  %></a></li>
-     <li><a href=""><span class="user-info-h3">Asked:</span><%= @current_user.asked_questions.count%></a></li>
-     <li><a href=""><span class="user-info-h3">Answers:</span><%= @current_user.answers.count%></a></li>
-     <li><a href="#newQuestion" data-toggle="modal"><button class="btn btn-primary" type="button">Ask </button></a></li>
+
+     <li></li>
+
+     <table class="table table-bordered table-striped">
+            <thead>
+               <td>
+                <%= image_tag @current_user.avatar , :class=>"user-avatar"%> 
+                <a href="">  <%= @current_user.name  %></a>
+               </td>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="label label-warning">Asked: <%= @current_user.asked_questions.count%></span>
+                </td>
+                
+              </tr>
+              <tr>
+                <td>
+                  <span class="label label-success">Answers:  <%= @current_user.answers.count%></span>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="#newQuestion" data-toggle="modal"><button class="btn btn-primary" type="button">Ask </button></a></td>
+              </tr>
+            </tbody>   
+          </table>
     <% end -%>
+
+    <table class="table table-bordered table-striped">
+          <thead>
+               <td>
+                  <b>课程</b>
+               </td>
+            </thead>
+            <tbody>
+              <% @current_user.courses.each do |c| %>
+              <tr>
+                <td>
+                   <%= link_to c.name, department_path(c) %>
+                </td>
+              </tr>
+              <% end -%>
+            </tbody> 
+      </table>
+
+
+
+    <table class="table table-bordered table-striped">
+          <thead>
+               <td>
+                  <b>学院</b>
+               </td>
+            </thead>
+            <tbody>
+              <% @departments.each do |d| %>
+              <tr>
+                <td>
+                   <%= link_to d.name, department_path(d) %>
+                </td>
+              </tr>
+              <% end -%>
+            </tbody> 
+      </table>
   </ul>
 
 

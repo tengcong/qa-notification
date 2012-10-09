@@ -4,4 +4,8 @@ class DepartmentsController < ApplicationController
     @departments=Department.all
   end
 
+  def show
+  	
+  end
+
 end
