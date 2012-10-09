@@ -7,6 +7,7 @@ gem "mongoid", "= 2.4.11"
 gem 'devise'
 gem "twitter-bootstrap-rails"
 gem 'coffee-script'
+gem 'carrierwave'
 
 gem 'sass-rails'
 group :test do

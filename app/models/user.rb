@@ -29,6 +29,8 @@ class User
 
   has_many :notices, :inverse_of => :receiver
 
+  mount_uploader :avatar, :AvatarUploader
+
   def lastest_question_of_my_courses
     desc_list_by_updated_at courses.map(&:questions).flatten
   end
