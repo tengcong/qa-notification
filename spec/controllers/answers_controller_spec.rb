@@ -5,8 +5,15 @@ describe AnswersController do
   describe "POST create" do
 
     before(:each) do
-      @asker = User.create :name => "tom"
-      @answerer = User.create :name => "kingkong"
+      @asker = User.where(:name => "tom").first
+      @answerer = User.where(:name => "kingkong").first
+      unless @asker
+        @asker = User.create :name => "tom", :email => "1@#{Time.now}.com"
+      end
+
+      unless @answerer
+        @answerer = User.create :name => "kingkong", :email => "2@#{Time.now}.com"
+      end
 
       @question = Question.create :title => "question title",:content => "question content", :user_id => @asker.id
 
@@ -62,8 +69,15 @@ describe AnswersController do
  describe "PUT update" do
 
   before(:each) do
-      @asker = User.create :name => "tom"
-      @answerer = User.create :name => "kingkong"
+      @asker = User.where(:name => "tom").first
+      @answerer = User.where(:name => "kingkong").first
+      unless @asker
+        @asker = User.create :name => "tom", :email => "1@#{Time.now}.com"
+      end
+
+      unless @answerer
+        @answerer = User.create :name => "kingkong", :email => "2@#{Time.now}.com"
+      end
 
       @question = Question.create :title => "question title",:content => "question content", :user_id => @asker.id
 

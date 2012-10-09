@@ -24,16 +24,22 @@ class User
 
   has_many :asked_questions, :class_name => "Question", :inverse_of => :user
   has_and_belongs_to_many :courses
+
   # for students
   belongs_to :majors
   belongs_to :department
   ##
   has_many :answers
   has_many :notices, :inverse_of => :receiver
-  
-  validates_uniqueness_of :email, :name
+
+  validates_uniqueness_of :email
 
   mount_uploader :avatar, AvatarUploader
+
+  # override courses
+  #def major_courses
+  #  majors.try(:courses)
+  #end
 
   def lastest_question_of_my_courses
     desc_list_by_updated_at courses.map(&:questions).flatten

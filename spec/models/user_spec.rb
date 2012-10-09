@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   before(:each) do
-    @tommy = User.create :name => 'tommy', :role => "student"
+    @tommy = User.create :name => 'tommy', :role => "student", :email => "122@#{Time.now}.com"
     generate_courses_with_questions_for @tommy
   end
 

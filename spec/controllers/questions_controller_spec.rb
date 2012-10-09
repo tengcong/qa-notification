@@ -4,7 +4,7 @@ describe QuestionsController do
   before(:each) do
       # 1.initial test data
       @course = Course.create :name => "aaa"
-      @user = User.create :name => 'jerry'
+      @user = User.create :name => 'jerry', :email => "123@#{Time.now}.com"
 
       # 2.test 'test data'
       Course.where(:name => 'aaa').first.should_not be_nil
@@ -36,7 +36,10 @@ describe QuestionsController do
 
   describe "GET index" do
     it "should response" do
-      user = User.create :name => "test", :role => "student"
+      user = User.where(:name => "test").first
+      unless user
+        user = User.create :name => "test", :role => "student", :email => "user@#{Time.now}.com"
+      end
       get :index, :user_id => user.id
     end
   end
