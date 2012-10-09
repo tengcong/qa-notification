@@ -11,7 +11,7 @@
   <div class="span3">
     <ul class="nav nav-tabs nav-stacked">
     <% if user_signed_in? %>
-     <li><a href=""><%= @current_user.name  %></a></li>
+     <li><a href=""> <%= image_tag @current_user.avatar %> <%= @current_user.name  %></a></li>
      <li><a href=""><span class="user-info-h3">Asked:</span><%= @current_user.asked_questions.count%></a></li>
      <li><a href=""><span class="user-info-h3">Answers:</span><%= @current_user.answers.count%></a></li>
      <li><a href="#newQuestion" data-toggle="modal"><button class="btn btn-primary" type="button">Ask </button></a></li>

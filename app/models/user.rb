@@ -20,16 +20,20 @@ class User
   field :last_sign_in_ip,    :type => String
 
   field :name, type: String
-  field :role, type: String
+  field :role, type: String, :default => "student"
 
   has_many :asked_questions, :class_name => "Question", :inverse_of => :user
   has_and_belongs_to_many :courses
+  # for students
+  belongs_to :majors
+  belongs_to :department
+  ##
   has_many :answers
+  has_many :notices, :inverse_of => :receiver
+  
   validates_uniqueness_of :email, :name
 
-  has_many :notices, :inverse_of => :receiver
-
-  mount_uploader :avatar, :AvatarUploader
+  mount_uploader :avatar, AvatarUploader
 
   def lastest_question_of_my_courses
     desc_list_by_updated_at courses.map(&:questions).flatten
@@ -48,5 +52,27 @@ class User
   def list_questions_notices
     notices.where(:notice_type => 'question').map(&:find_ref_object)
   end
+
+  def is_student?
+    role == "student"
+  end
+
+  private
+  def majors
+    if is_student?
+      majors
+    else
+      nil
+    end
+  end
+
+  def department
+    if is_student?
+      department
+    else
+      nil
+    end
+  end
+
 end
 
