@@ -19,10 +19,17 @@
                       <input type="text" class="search-query span2" placeholder="Search">
                     </form>
                     <ul class="nav pull-right">
-                      <li><a href="#">Notification</a></li>
+                      <% if user_signed_in? %>
+                      <li><a href="#"><span class="badge badge-important"><%= current_user.notices.count%></span></a></li>
+                      <% end -%>
+                      
                       <li class="divider-vertical"></li>
                       <li class="dropdown">
+                        <% if user_signed_in? %>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %> <b class="caret"></b></a>
+                        <% else %>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+                        <% end -%>
                         <ul class="dropdown-menu">
                           <%= render 'devise/shared/navigation' %>
 
