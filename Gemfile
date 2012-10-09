@@ -6,6 +6,9 @@ gem "bson_ext", "= 1.6.4"
 gem "mongoid", "= 2.4.11"
 gem 'devise'
 gem "twitter-bootstrap-rails"
+gem 'coffee-script'
+
+gem 'sass-rails'
 group :test do
   gem "fakeweb"
   gem 'timecop'

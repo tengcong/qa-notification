@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Notification</title>
+  <title>济宁医学院-在线问答社区</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= render "home/head" %>
+<div class="container">
 <%= yield %>
-
+</div>
 </body>
 </html>

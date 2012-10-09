@@ -25,6 +25,7 @@ class User
   has_many :asked_questions, :class_name => "Question", :inverse_of => :user
   has_and_belongs_to_many :courses
   has_many :answers
+  validates_uniqueness_of :email, :name
 
   has_many :notices, :inverse_of => :receiver
 

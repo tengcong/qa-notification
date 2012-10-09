@@ -18,6 +18,6 @@ class HomeController < ApplicationController
   end
 
   def guest_home
-    @questions = Questions.all
+    @questions = Question.all
   end
 end
