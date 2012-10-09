@@ -5,7 +5,7 @@ gem 'jquery-rails'
 gem "bson_ext", "= 1.6.4"
 gem "mongoid", "= 2.4.11"
 gem 'devise'
-
+gem "twitter-bootstrap-rails"
 group :test do
   gem "fakeweb"
   gem 'timecop'
