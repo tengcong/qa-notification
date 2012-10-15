@@ -6,6 +6,17 @@ describe User do
     generate_courses_with_questions_for @tommy
   end
 
+  describe "#set_courses" do
+    it "should copy all major's courses to user" do
+      m = Major.new :name => "mmm"
+      m.courses = [Course.new(:name => "1"), Course.new(:name => "2")]
+      Major.stub(:find).and_return(m)
+
+      @tommy.set_courses "testid...123"
+      @tommy.courses.should == m.courses
+    end
+  end
+
   describe "#lastest_question_of_my_courses" do
     it "should return all courses questions" do
       questions = @tommy.lastest_question_of_my_courses

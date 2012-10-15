@@ -1,3 +1,6 @@
+User signup --> choose department --> choose major
+                                            --> copy major-courses to user courses
+
 1> user(role) - questions - answers
     all related crud | tests stuff
 2> notifications
@@ -8,4 +11,3 @@
     user(teacher) have ability to send emails to other users
 4> about authentications stuff
 5> frontend stuff
-

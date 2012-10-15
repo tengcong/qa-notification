@@ -41,6 +41,12 @@ class User
   #  majors.try(:courses)
   #end
 
+  def set_courses major_id
+    m = Major.find major_id
+    self.courses = m.courses
+    save
+  end
+
   def lastest_question_of_my_courses
     desc_list_by_updated_at courses.map(&:questions).flatten
   end
