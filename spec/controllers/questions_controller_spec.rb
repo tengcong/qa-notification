@@ -4,7 +4,10 @@ describe QuestionsController do
   before(:each) do
       # 1.initial test data
       @course = Course.create :name => "aaa"
-      @user = User.create :name => 'jerry', :email => "123@#{Time.now}.com"
+      @user = User.where(:name => 'jerry').first
+      unless @user
+        @user = User.create :name => 'jerry', :email => "123@#{Time.now}.com"
+      end
 
       # 2.test 'test data'
       Course.where(:name => 'aaa').first.should_not be_nil

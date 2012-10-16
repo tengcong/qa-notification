@@ -26,7 +26,7 @@ class User
   has_and_belongs_to_many :courses
 
   # for students
-  belongs_to :majors
+  belongs_to :major
   belongs_to :department
   ##
   has_many :answers
@@ -36,14 +36,22 @@ class User
 
   mount_uploader :avatar, AvatarUploader
 
-  # override courses
-  #def major_courses
-  #  majors.try(:courses)
-  #end
+  def set_major major_id
+    self.major = Major.find major_id
+  end
 
-  def set_courses major_id
-    m = Major.find major_id
-    self.courses = m.courses
+  def set_department
+    self.department = self.major.department
+  end
+
+  def set_courses
+    self.courses = self.major.courses
+  end
+
+  def set_self_info major_id
+    set_major major_id
+    set_department
+    set_courses
     save
   end
 
@@ -69,16 +77,15 @@ class User
     role == "student"
   end
 
-  private
-  def majors
+  def get_major
     if is_student?
-      majors
+      major
     else
       nil
     end
   end
 
-  def department
+  def get_department
     if is_student?
       department
     else

@@ -10,9 +10,10 @@ describe User do
     it "should copy all major's courses to user" do
       m = Major.new :name => "mmm"
       m.courses = [Course.new(:name => "1"), Course.new(:name => "2")]
-      Major.stub(:find).and_return(m)
+      Major.stub(:find).with(m.id).and_return(m)
 
-      @tommy.set_courses "testid...123"
+      @tommy.set_major m.id
+      @tommy.set_courses
       @tommy.courses.should == m.courses
     end
   end
