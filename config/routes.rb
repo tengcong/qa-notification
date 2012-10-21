@@ -10,6 +10,8 @@ Notification::Application.routes.draw do
   end
 
   resources :departments
+  resources :majors
+  resources :courses
   resources :questions do
     resources :answers
   end

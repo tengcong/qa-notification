@@ -39,7 +39,7 @@
             </tbody>   
           </table>
     <% end -%>
-
+    
     <table class="table table-bordered table-striped">
           <thead>
                <td>
@@ -47,14 +47,37 @@
                </td>
             </thead>
             <tbody>
+               <% if user_signed_in? %>
               <% @current_user.courses.each do |c| %>
+             
               <tr>
                 <td>
-                   <%= link_to c.name, department_path(c) %>
+                   <%= link_to c.name, course_path(c) %>
                 </td>
               </tr>
               <% end -%>
             </tbody> 
+             <% end -%>
+      </table>
+
+          <table class="table table-bordered table-striped">
+          <thead>
+               <td>
+                  <b>专业</b>
+               </td>
+            </thead>
+            <tbody>
+               <% if user_signed_in? %>
+              <% @current_user.department.majors.each do |c| %>
+             
+              <tr>
+                <td>
+                   <%= link_to c.name, major_path(c) %>
+                </td>
+              </tr>
+              <% end -%>
+            </tbody> 
+             <% end -%>
       </table>
 
 

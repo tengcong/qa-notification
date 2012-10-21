@@ -3,6 +3,15 @@
   They will automatically be included in application.css.
 */
 
+body{
+	background-image: url(straws.png);
+}
+
+
+.navbar{
+	box-shadow:0 2px 5px #ccc;
+}
+
 
 .account-form{
 	margin-left: auto;
