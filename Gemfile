@@ -11,6 +11,7 @@ gem 'carrierwave'
 gem 'carrierwave-mongoid',:require => 'carrierwave/mongoid'
 gem 'mini_magick'
 gem 'sass-rails'
+gem 'simple_form'
 
 group :test do
   gem "fakeweb"

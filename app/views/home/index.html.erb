@@ -33,6 +33,27 @@
                   <span class="label label-success">Answers:  <%= @current_user.answers.count%></span>
                 </td>
               </tr>
+
+              <!-- For user major -->
+
+              <% if @current_user.major %>
+              <tr>
+                <td>
+                  <span class="label label-inverse">专业: <%= @current_user.major.name%></span>
+                </td>
+                
+              </tr>
+
+              <% end -%>
+              <!-- For user department -->
+
+              <tr>
+                <td>
+                  <span class="label label-inverse">所属院系: <%= @current_user.department.name%></span>
+                </td>
+                
+              </tr>
+
               <tr>
                 <td><a href="#newQuestion" data-toggle="modal"><button class="btn btn-primary" type="button">Ask </button></a></td>
               </tr>
@@ -48,13 +69,18 @@
             </thead>
             <tbody>
                <% if user_signed_in? %>
-              <% @current_user.courses.each do |c| %>
+              <% @current_user.department.majors.each do |m| %>
              
+               <% m.courses.each do |c| %>
               <tr>
                 <td>
+
                    <%= link_to c.name, course_path(c) %>
                 </td>
               </tr>
+              <% end -%>
+
+
               <% end -%>
             </tbody> 
              <% end -%>

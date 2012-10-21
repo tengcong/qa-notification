@@ -2,7 +2,6 @@ class HomeController < ApplicationController
 
   def index
     @departments = Department.all
-
     if current_user
       login_user_home
     else
