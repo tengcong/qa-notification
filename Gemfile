@@ -10,8 +10,8 @@ gem 'coffee-script'
 gem 'carrierwave'
 gem 'carrierwave-mongoid',:require => 'carrierwave/mongoid'
 gem 'mini_magick'
-
 gem 'sass-rails'
+
 group :test do
   gem "fakeweb"
   gem 'timecop'
