@@ -3,6 +3,9 @@ require 'spec_helper'
 describe UsersController do
   before(:each) do
     @user = User.where(:name => "tom").first
+    unless @user
+      @user = User.create(:name => "tom", :email => "xx@1.com")
+    end
 
     @department = Department.create :name => "xinxi"
     @major = Major.create :name => "pc"
@@ -13,6 +16,17 @@ describe UsersController do
 
     @department.majors << @majors
     @department.save
+  end
+
+  describe "#set_role" do
+    it "should will mark user to teacher" do
+      @user.role = "student"
+      @user.save
+
+      put :set_role, :role => "teacher", :id => @user.id
+      @user.reload
+      @user.role.should == "to_be_teacher"
+    end
   end
 
   describe "#set_courses_with_major" do

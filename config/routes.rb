@@ -4,6 +4,8 @@ Notification::Application.routes.draw do
   resources :users, :only => [] do
     member do
       post :set_courses_with_major
+      put :set_role
+      get :show_to_be_confirmed_teachers
     end
   end
 

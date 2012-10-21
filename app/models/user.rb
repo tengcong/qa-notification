@@ -34,6 +34,8 @@ class User
 
   validates_uniqueness_of :email
 
+  ROLE = ["student", "teacher", "admin"]
+
   mount_uploader :avatar, AvatarUploader
 
   def set_major major_id
@@ -75,6 +77,21 @@ class User
 
   def is_student?
     role == "student"
+  end
+
+  def set_role new_role
+    return unless ROLE.include?(new_role)
+    if new_role == "teacher"
+      self.role = "to_be_teacher"
+    else
+      self.role = new_role
+    end
+    self.save
+  end
+
+  def confirm_teacher
+    self.role = "teacher"
+    save
   end
 
   def get_major
