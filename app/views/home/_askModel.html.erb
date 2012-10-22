@@ -1,7 +1,7 @@
 <% if current_user %>
   <div class="modal hide fade" id="newQuestion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
-      <%= simple_form_for Question.new  do |f| %>
+      <%= simple_form_for current_user.asked_questions.build  do |f| %>
         <input type="hidden" name="user_id" value="<%= current_user.id %>">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <%= f.input :title , :placeholder=>"您的问题是什么?" %>
