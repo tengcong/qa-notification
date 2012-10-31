@@ -7,12 +7,26 @@ class Notice
 
   field :ref_id, :type => String
 
+  # 1 means unread
+  # 0 means read
   field :unread, :type => Integer, :default => 1
 
   belongs_to :sender, :class_name => "User"
   belongs_to :receiver, :class_name => "User"
 
+
+  # 按updated时间倒叙
   scope :sorted, desc(:updated_at)
+  # 所有未读
+  scope :unread, where(:unread => 1)
+
+  def find_sender
+    self.reload.sender
+  end
+
+  def find_receiver
+    self.reload.receiver
+  end
 
   class << self
     def generate_notice attr, s, r
@@ -24,6 +38,11 @@ class Notice
 
   def find_ref_object
     notice_type.capitalize.constantize.find ref_id
+  end
+
+  def readed
+    self.unread = 0
+    save
   end
 
 end
