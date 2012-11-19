@@ -28,6 +28,13 @@
 </div>
 
 
+ <div class="control-group">
+ <%= f.label :major ,:class=>"control-label"%>
+  <div class="controls">
+  <%= f.select(:major, options_for_select(get_majors.collect {|p| [ p.name, p.id ] },   "选择你的专业吧"), :selected =>f.object.major) %>
+</div>
+</div>
+
 
  <div class="control-group">
  <%= f.label :password ,:class=>"control-label"%> 

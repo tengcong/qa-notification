@@ -2,10 +2,9 @@ class QuestionsController < ApplicationController
 
   def create
     question = Question.create params[:question]
-    user = User.find params[:user_id]
+    user = User.find params[:question][:user]
     user.add_asked_questions question
-
-    render :nothing => true
+    redirect_to :back
   end
 
   def index

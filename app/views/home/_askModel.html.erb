@@ -2,15 +2,13 @@
   <div class="modal hide fade" id="newQuestion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
       <%= simple_form_for current_user.asked_questions.build  do |f| %>
-        <input type="hidden" name="user_id" value="<%= current_user.id %>">
+        <input type="hidden" name="question[user]" value="<%= current_user.id.to_s %>">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <%= f.input :title , :placeholder=>"您的问题是什么?" %>
       </div>
       <div class="modal-body">
         <%= f.input :content , :as => :text ,:placeholder=>"请在这里描述您的问题" ,:input_html => { :class => 'span5' ,:rows=>"10"} %>
-
-        <%= f.label :course ,:class=>"control-label" %>
-        <%= f.select(:course, options_for_select(current_user.department.majors.collect {|p| [ p.name, p.id ] },   "选择你的学院吧"), :selected =>f.object.course) %>
+        <input type="hidden" name="question[course]" value="<%= @course.id.to_s %>">
       </div>
       <div class="modal-footer">
 
