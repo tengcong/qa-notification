@@ -4,6 +4,7 @@ class HomeController < ApplicationController
     @departments = Department.all
     if current_user
       login_user_home
+      @questions = current_user.get_major.try(:find_all_related_questions)
     else
       guest_home
     end
