@@ -1,0 +1,14 @@
+<li class="question" id="<%= question.id %>">
+	<img src="<%= question.user.avatar %>" alt="">
+	<div class="question-section">
+		<div class="question-title">
+			<a href=""><%= question.title %></a>
+		</div>
+		<div class="question-details">
+			程序员  •  chemhack  •  14 分钟前  •  最后回复来自 xlmo
+		</div>
+	</div>
+	<div class="question-has-answer">
+		<span class="badge"><%= question.answers.count %></span>
+	</div>
+</li>
