@@ -7,6 +7,11 @@ class QuestionsController < ApplicationController
     redirect_to :back
   end
 
+  def show
+    @question = Question.find params[:id]
+    @departments = Department.all
+  end
+
   def index
     user = User.find params[:user_id]
     @questions = user.lastest_question_of_my_courses

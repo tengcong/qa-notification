@@ -45,3 +45,39 @@
 	margin-top:2px;
 	display: inline-block;
 }
+
+.questions-list{
+
+	box-shadow:2px 2px 5px #e8e8e8;
+	margin-bottom:30px;
+	ul{
+		margin-bottom:0px;
+	}
+
+}
+.single-question{
+	background:white;
+	padding:10px;
+	border-radius:5px;
+	box-shadow:2px 2px 5px #e8e8e8;
+
+	.question-header{
+		
+		margin-left:0 !important;
+		margin-bottom:20px;
+		padding:10px;
+		.question-left-header{
+
+		}
+		.question-title{
+			font-size:18px;
+		}
+	}
+	.question-right-avatar{
+		img{
+			width:70px;
+			height:70px;
+			border-radius:5px;
+		}
+	}
+}
