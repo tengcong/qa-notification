@@ -1,3 +1,17 @@
+<script>
+  $(function(){
+    $('#user_department').change(function(){
+      var id = $(this).val();
+      $.ajax({
+        url: "/departments/get_majors?d_id=" + id,
+        type: 'GET',
+        success: function(data){
+          $('#user_major').html(data);
+        }
+      });
+    });
+  });
+</script>
 <div class="form-horizontal account-form">
 
 <legend>Edit <%= resource_name.to_s.humanize %></legend>
@@ -20,24 +34,22 @@
   </div>
 </div>
 
- <div class="control-group">
- <%= f.label :department ,:class=>"control-label"%>
+<div class="control-group">
+  <%= f.label :department ,:class=>"control-label"%>
   <div class="controls">
-  <%= f.select(:department, options_for_select(get_departments.collect {|p| [ p.name, p.id ] },   "选择你的学院吧"), :selected =>f.object.department) %>
-</div>
+    <%= f.select :department, Department.all.map{|d| [d.name, d.id]} %>
+  </div>
 </div>
 
-
- <div class="control-group">
- <%= f.label :major ,:class=>"control-label"%>
+<div class="control-group">
+  <%= f.label :major ,:class=>"control-label"%>
   <div class="controls">
-  <%= f.select(:major, options_for_select(get_majors.collect {|p| [ p.name, p.id ] },   "选择你的专业吧"), :selected =>f.object.major) %>
+    <%= f.select :major, Department.first.majors.map{|m|[m.name, m.id]}%>
+  </div>
 </div>
-</div>
-
 
  <div class="control-group">
- <%= f.label :password ,:class=>"control-label"%> 
+ <%= f.label :password ,:class=>"control-label"%>
   <div class="controls">
   <%= f.password_field :password, :autocomplete => "off" , :placeholder=>"(leave blank if you don't want to change it)"%>
 </div>
@@ -52,7 +64,7 @@
 </div>
 
  <div class="control-group">
- <%= f.label :current_password ,:class=>"control-label"%> 
+ <%= f.label :current_password ,:class=>"control-label"%>
  <div class="controls">
   <%= f.password_field :current_password, :placeholder =>"(we need your current password to confirm your changes)" %>
 </div>
