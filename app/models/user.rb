@@ -22,12 +22,15 @@ class User
   field :name, type: String
   field :role, type: String, :default => "student"
 
+  # user asked questions
   has_many :asked_questions, :class_name => "Question", :inverse_of => :user
+  # user's department's major has some courses
   has_and_belongs_to_many :courses
 
   # for students
   belongs_to :major
   belongs_to :department
+
   ##
   has_many :answers
   has_many :notices, :inverse_of => :receiver

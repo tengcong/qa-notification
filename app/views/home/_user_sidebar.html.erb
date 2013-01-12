@@ -58,7 +58,7 @@
                </td>
             </thead>
             <tbody>
-               <% if user_signed_in? && current_user.department && current_user.department.marjors %>
+               <% if user_signed_in? && current_user.department && current_user.department.majors %>
               <% current_user.department.majors.each do |m| %>
 
                <% m.courses.each do |c| %>
