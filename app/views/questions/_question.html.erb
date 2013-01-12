@@ -1,5 +1,5 @@
 <li class="question" id="<%= question.id %>">
-	<img src="<%= question.user.avatar %>" alt="">
+	<img src="<%= question.user.try :avatar %>" alt="">
 	<div class="question-section">
 		<div class="question-title">
 			<%= link_to question.title,question_path(question)  %>

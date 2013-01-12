@@ -24,7 +24,6 @@ class User
 
   # user asked questions
   has_many :asked_questions, :class_name => "Question", :inverse_of => :user
-  # user's department's major has some courses
   has_and_belongs_to_many :courses
 
   # for students
@@ -36,6 +35,8 @@ class User
   has_many :notices, :inverse_of => :receiver
 
   validates_uniqueness_of :email
+
+  after_save :set_courses
 
   ROLE = ["student", "teacher", "admin"]
 

@@ -58,19 +58,13 @@
                </td>
             </thead>
             <tbody>
-               <% if user_signed_in? && current_user.department && current_user.department.majors %>
-              <% current_user.department.majors.each do |m| %>
-
-               <% m.courses.each do |c| %>
-              <tr>
-                <td>
-
-                   <%= link_to c.name, course_path(c) %>
-                </td>
-              </tr>
-              <% end -%>
-
-
+               <% if user_signed_in? %>
+               <% current_user.courses.each do |c| %>
+                <tr>
+                  <td>
+                     <%= link_to c.name, course_path(c) %>
+                  </td>
+                </tr>
               <% end -%>
             </tbody>
              <% end -%>
