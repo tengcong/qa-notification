@@ -75,6 +75,11 @@ class User
     save
   end
 
+  def clear_notices
+    self.notices.clear
+    save
+  end
+
   def list_questions_notices
     notices.where(:notice_type => 'question').map(&:find_ref_object)
   end
