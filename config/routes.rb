@@ -9,7 +9,12 @@ Notification::Application.routes.draw do
     end
   end
 
-  resources :departments
+  resources :departments do
+    collection do
+      get :get_majors
+    end
+  end
+
   resources :majors
   resources :courses
   resources :questions do
