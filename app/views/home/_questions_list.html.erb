@@ -1,9 +1,7 @@
   <div class="span8">
-    <ul class="nav nav-tabs nav-stacked">
-      <% if @questions %>
-        <% @questions.each do |q| %>
-          <li><%= link_to q.title,question_path(q) %></li>
-        <% end -%>
-      <% end-%>
+     <ul class="nav nav-tabs nav-stacked">
+      <% @questions.each do |q| %>
+         <%= render( :partial => 'questions/question' , :collection => @questions )%>
+      <% end -%>
      </ul>
   </div>
