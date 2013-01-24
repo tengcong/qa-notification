@@ -16,10 +16,14 @@
                     <ul class="nav pull-right">
                       <li class="divider-vertical"></li>
                       <% if user_signed_in? %>
-                      <li><a href="#"><span class="badge badge-important"><%= current_user.notices.count%></span></a></li>
+                        <li>
+                        <a href="<%= notices_path %>">
+                          <%if current_user.notices.unread.count > 0%>
+                          <span class="badge badge-important"><%= current_user.notices.unread.count%></span></a></li>
+                      <%else%>
+                          <span class="badge badge-normal"><%= current_user.notices.unread.count%></span></a></li>
+                      <%end%>
                       <% end -%>
-                      
-                      
                       <li class="dropdown pull-right">
                         <% if user_signed_in? %>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %> <b class="caret"></b></a>

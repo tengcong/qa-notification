@@ -1,0 +1,5 @@
+<ul>
+<% @notices.each do |notice|%>
+  <li><%= notice.find_ref_object.title %></li>
+<% end %>
+</ul>

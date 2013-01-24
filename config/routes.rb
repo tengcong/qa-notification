@@ -9,6 +9,8 @@ Notification::Application.routes.draw do
     end
   end
 
+  resources :notices
+
   resources :departments do
     collection do
       get :get_majors

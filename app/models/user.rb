@@ -76,8 +76,7 @@ class User
   end
 
   def clear_notices
-    self.notices.clear
-    save
+    self.notices.map(&:readed)
   end
 
   def list_questions_notices
