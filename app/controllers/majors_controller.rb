@@ -1,7 +1,7 @@
 class MajorsController < ApplicationController
   def show
     @major = Major.find params[:id]
+    @departments = Department.all
     @courses = @major.courses
-    render :text => "#{@major.name} : " << @courses.map(&:name).join('-')
   end
 end

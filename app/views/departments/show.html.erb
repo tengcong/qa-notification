@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="span8">
+    <div class="span7 courses-list">
+       <% @department.majors.each do |c| %>
+                   <%= link_to c.name, major_path(c) %>
+      <% end %>
+    </div>
+  </div>
+  <%= render 'home/user_sidebar' %>
+</div>
