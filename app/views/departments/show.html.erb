@@ -2,7 +2,7 @@
   <div class="span8">
     <div class="span7 courses-list">
        <% @department.majors.each do |c| %>
-                   <%= link_to c.name, major_path(c) %>
+                   <li><%= link_to c.name, major_path(c) %></li>
       <% end %>
     </div>
   </div>
