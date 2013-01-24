@@ -1,0 +1,12 @@
+<div class="span7 answer" id="<%= answer.id %>">
+	<div class="answer-header">
+		<img src="<%= answer.question.user.try :avatar %>" alt="">
+	</div>
+	<div class="answer-content">
+		<div class="answer-details">
+			<div class="answer-user-name"><%= answer.question.user.name %></div>
+			<div class="answer-created_at"><%= answer.created_at %></div>
+		</div>
+		<div class="answer-body"><%= answer.content %></div>
+	</div>
+</div>

@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
     answer.add_association_to_question params[:question_id]
 
     answer.create_related_notice
-    render :nothing => true
+    redirect_to(:back)
   end
 
   def destroy
