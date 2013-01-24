@@ -5,7 +5,9 @@ class DepartmentsController < ApplicationController
   end
 
   def show
-
+    @departments = Department.all
+    @department = Department.find(params[:id])
+    @majors = @department.majors
   end
 
   def get_majors
