@@ -1,6 +1,9 @@
 <div class="container">
 
-  
-  <%= render 'questions_list' %>
+    全校最热门课程:
+    <% @hot_courses.each do |hc| %>
+      <li><%= link_to hc.name, hc%></li>
+    <% end %>
 
+  <%= render 'questions_list' %>
   <%= render 'user_sidebar' %>
