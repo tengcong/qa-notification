@@ -87,12 +87,13 @@ class User
     notices.where(:notice_type => 'question').map(&:find_ref_object)
   end
 
-  def is_student?
-    role == ROLE[0]
-  end
-
-  def is_admin?
-    role == ROLE[2]
+  # def is_student?
+  # def is_admin?
+  # def is_teacher?
+  ROLE.each do |role|
+    define_method "is_#{role}?" do
+      self.role == role
+    end
   end
 
   def set_role new_role

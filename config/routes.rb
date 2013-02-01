@@ -1,7 +1,7 @@
 Notification::Application.routes.draw do
   devise_for :users
 
-  resources :users, :only => [] do
+  resources :users, :only => [:show] do
     member do
       post :set_courses_with_major
       put :set_role

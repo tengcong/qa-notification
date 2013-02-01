@@ -1,114 +1,121 @@
 <div class="span3 right-sidebar">
-    <ul class="nav nav-tabs nav-stacked">
+  <ul class="nav nav-tabs nav-stacked">
 
 
-    <% if user_signed_in? %>
-     <li></li>
-     <table class="table table-bordered table-striped">
-            <thead>
-               <td>
-                <%= image_tag current_user.avatar , :class=>"user-avatar"%>
-                <a href="">  <%= current_user.name  %></a>
-               </td>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <span class="label label-warning">Asked: <%= current_user.asked_questions.count%></span>
-                </td>
-
-              </tr>
-              <tr>
-                <td>
-                  <span class="label label-success">Answers:  <%= current_user.answers.count%></span>
-                </td>
-              </tr>
-
-              <!-- For user major -->
-
-              <% if current_user.major %>
-              <tr>
-                <td>
-                  <span class="label label-inverse">专业: <%= current_user.major.name%></span>
-                </td>
-
-              </tr>
-
-              <% end -%>
-              <!-- For user department -->
-
-              <tr>
-                <td>
-                  <span class="label label-inverse">所属院系: <%= current_user.try(:department).try(:name)%></span>
-                </td>
-
-              </tr>
-
-              <tr>
-                <td><a href="#newQuestion" data-toggle="modal"><button class="btn btn-primary" type="button">Ask </button></a></td>
-              </tr>
-            </tbody>
-          </table>
-
+    <% if user_signed_in? && current_user.is_student? %>
+      <li></li>
     <table class="table table-bordered table-striped">
-          <thead>
-               <td>
-                  <b>课程</b>
-               </td>
-            </thead>
-            <tbody>
-               <% if user_signed_in? %>
-               <% current_user.courses.each do |c| %>
-                <tr>
-                  <td>
-                     <%= link_to c.name, course_path(c) %>
-                  </td>
-                </tr>
-              <% end -%>
-            </tbody>
-             <% end -%>
-      </table>
+      <thead>
+        <td>
+          <%= image_tag current_user.avatar , :class=>"user-avatar"%>
+          <a href="">  <%= current_user.name  %></a>
+        </td>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <span class="label label-warning">Asked: <%= current_user.asked_questions.count%></span>
+        </td>
 
-          <table class="table table-bordered table-striped">
-          <thead>
-               <td>
-                  <b>专业</b>
-               </td>
-            </thead>
-            <tbody>
-               <% if user_signed_in? && current_user.department && current_user.department.majors %>
-              <% current_user.department.majors.each do |c| %>
+      </tr>
+      <tr>
+        <td>
+          <span class="label label-success">Answers:  <%= current_user.answers.count%></span>
+        </td>
+      </tr>
 
-              <tr>
-                <td>
-                   <%= link_to c.name, major_path(c) %>
-                </td>
-              </tr>
-              <% end -%>
-            </tbody>
-             <% end -%>
-      </table>
+      <!-- For user major -->
 
+      <% if current_user.major %>
+        <tr>
+        <td>
+          <span class="label label-inverse">专业: <%= current_user.major.name%></span>
+        </td>
 
+      </tr>
 
     <% end -%>
+      <!-- For user department -->
+
+      <tr>
+        <td>
+          <span class="label label-inverse">所属院系: <%= current_user.try(:department).try(:name)%></span>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td><a href="#newQuestion" data-toggle="modal"><button class="btn btn-primary" type="button">Ask </button></a></td>
+      </tr>
+      </tbody>
+    </table>
+
     <table class="table table-bordered table-striped">
-          <thead>
-               <td>
-                  <b>学院</b>
-               </td>
-            </thead>
-            <tbody>
-              <% @departments.each do |d| %>
-              <tr>
-                <td>
-                   <%= link_to d.name, department_path(d) %>
-                </td>
-              </tr>
-              <% end -%>
-            </tbody>
-      </table>
+      <thead>
+        <td>
+          <b>课程</b>
+        </td>
+      </thead>
+      <tbody>
+      <% if user_signed_in? %>
+        <% current_user.courses.each do |c| %>
+        <tr>
+        <td>
+          <%= link_to c.name, course_path(c) %>
+        </td>
+      </tr>
+    <% end -%>
+      </tbody>
+    <% end -%>
+    </table>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <td>
+          <b>专业</b>
+        </td>
+      </thead>
+      <tbody>
+      <% if user_signed_in? && current_user.department && current_user.department.majors %>
+        <% current_user.department.majors.each do |c| %>
+
+        <tr>
+        <td>
+          <%= link_to c.name, major_path(c) %>
+        </td>
+      </tr>
+    <% end -%>
+      </tbody>
+    <% end -%>
+    </table>
+
+  <% end -%>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <td>
+          <b>学院</b>
+        </td>
+      </thead>
+      <tbody>
+      <% @departments.each do |d| %>
+        <tr>
+        <td>
+          <%= link_to d.name, department_path(d) %>
+        </td>
+      </tr>
+    <% end -%>
+      </tbody>
+    </table>
   </ul>
 
+  <% if current_user && current_user.is_teacher? %>
+    <br>学僧列表:
+  <ul>
+    <% current_user.get_my_students.each do |e|%>
+      <li><%= e.email%> : <%= link_to e.name, e %></li>
+  <%end%>
+  </ul>
+
+  <% end %>
 
 </div>

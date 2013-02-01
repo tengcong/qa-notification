@@ -8,14 +8,6 @@
 
     <% if current_user %>
     <%= current_user.role %>
-    <%if current_user.role == 'teacher'%>
-      <br>学僧列表:
-      <ul>
-        <% current_user.get_my_students.each do |e|%>
-          <li><%= e.email%> : <%= e.name%></li>
-        <%end%>
-      </ul>
-    <% end %>
     <% else %>
     游客
     <%end %>

@@ -1,0 +1,15 @@
+提问的问题:
+
+<ul>
+<% @user.asked_questions.each do |q| %>
+  <li><%= q.title %></li>
+<%end%>
+</ul>
+
+回答:
+
+<ul>
+<% @user.answers.each do |a| %>
+  <li><%= a.question.title %></li>
+<%end%>
+</ul>

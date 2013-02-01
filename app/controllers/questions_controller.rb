@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
     question = Question.create params[:question]
     user = User.find params[:question][:user]
     user.add_asked_questions question
+    question.notice_to_course_major_teacher
     redirect_to :back
   end
 

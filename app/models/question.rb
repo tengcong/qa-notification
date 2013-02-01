@@ -30,4 +30,26 @@ class Question
     self.click_rate += 1
     save
   end
+
+  def teachers
+    course.majors.inject([]){ |result, m| result |= m.users.select{ |u| u.is_teacher? }; result }
+  end
+
+  def notice_to_course_major_teacher
+    notices = create_question_notice(self.user, teachers)
+  end
+
+  def create_question_notice sender, receivers
+    notice_attr = { :notice_type => "question",
+      :content => self.content,
+      :ref_id => self.id
+    }
+
+    receivers.each do |recevier|
+      notice = Notice.generate_notice notice_attr, sender, recevier
+      notice.save
+      recevier.add_new_notice(notice)
+    end
+  end
+
 end
