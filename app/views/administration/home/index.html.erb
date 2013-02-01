@@ -1,0 +1,5 @@
+<% @to_be_teachers.each do |e| %>
+  <%= e.name %> : <%= e.email %>
+<%= button_to 'set_teacher', set_teacher_user_path(e), :method => :put %>
+<%= button_to 'set_student', set_student_user_path(e), :method => :put %>
+<% end %>

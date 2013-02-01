@@ -4,6 +4,22 @@
     <% @hot_courses.each do |hc| %>
       <li><%= link_to hc.name, hc%></li>
     <% end %>
+    你的角色是
+
+    <% if current_user %>
+    <%= current_user.role %>
+    <%if current_user.role == 'teacher'%>
+      <br>学僧列表:
+      <ul>
+        <% current_user.get_my_students.each do |e|%>
+          <li><%= e.email%> : <%= e.name%></li>
+        <%end%>
+      </ul>
+    <% end %>
+    <% else %>
+    游客
+    <%end %>
+
 
   <%= render 'questions_list' %>
   <%= render 'user_sidebar' %>

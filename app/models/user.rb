@@ -61,6 +61,10 @@ class User
     save
   end
 
+  def get_my_students
+    User.where(:major_id => self.major_id, :role => ROLE[0])
+  end
+
   def lastest_question_of_my_courses
     desc_list_by_updated_at courses.map(&:questions).flatten
   end
@@ -84,12 +88,16 @@ class User
   end
 
   def is_student?
-    role == "student"
+    role == ROLE[0]
+  end
+
+  def is_admin?
+    role == ROLE[2]
   end
 
   def set_role new_role
     return unless ROLE.include?(new_role)
-    if new_role == "teacher"
+    if new_role == ROLE[1]
       self.role = "to_be_teacher"
     else
       self.role = new_role
@@ -98,7 +106,12 @@ class User
   end
 
   def confirm_teacher
-    self.role = "teacher"
+    self.role = ROLE[1]
+    save
+  end
+
+  def confirm_student
+    self.role = ROLE[0]
     save
   end
 

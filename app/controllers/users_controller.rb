@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :find_user, :only => [:set_courses_with_major, :set_role, :set_teacher]
+  before_filter :find_user, :only => [:set_courses_with_major, :set_role, :set_teacher, :set_student]
   def set_courses_with_major
     @user.set_self_info params[:major_id]
     render :nothing => true
@@ -18,6 +18,13 @@ class UsersController < ApplicationController
 
   def set_teacher
     @user.confirm_teacher
+    render :text => "set successfully"
+  end
+
+  def set_student
+    p params[:id]
+    p '-' *30
+    @user.confirm_student
     render :text => "set successfully"
   end
 

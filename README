@@ -1,13 +1,8 @@
-User signup --> choose department --> choose major
-                                            --> copy major-courses to user courses
-
-1> user(role) - questions - answers
-    all related crud | tests stuff
-2> notifications
-    now we have 2 kind(s) of notifications:
-    -new answers to user's questions
-    -messages in this site
-3> emails stuff
-    user(teacher) have ability to send emails to other users
 4> about authentications stuff
-5> frontend stuff
+5> frontend stuff doing...
+
+now we have to have the roles in the system
+
+teachers ---> students
+
+

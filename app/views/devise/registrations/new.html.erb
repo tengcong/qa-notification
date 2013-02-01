@@ -26,6 +26,13 @@
     </div>
 
     <div class="control-group">
+      <%= f.label :email ,:class=>"control-label"%>
+      <div class="controls">
+        <%= f.email_field :email, :placeholder=>"Email" %>
+      </div>
+    </div>
+
+    <div class="control-group">
       <%= f.label :department ,:class=>"control-label"%>
       <div class="controls">
         <%= f.select :department, Department.all.map{|d| [d.name, d.id]} %>
@@ -39,12 +46,13 @@
       </div>
     </div>
 
-    <div class="control-group">
-      <%= f.label :email ,:class=>"control-label"%>
+     <div class="control-group">
+      <%= f.label :role ,:class=>"control-label"%>
       <div class="controls">
-        <%= f.email_field :email, :placeholder=>"Email" %>
+        <%= f.select :role, [['学生', 'student'], ['老师', 'to_be_teacher']]%>
       </div>
     </div>
+
 
     <div class="control-group">
       <%= f.label :password ,:class=>"control-label"%>
