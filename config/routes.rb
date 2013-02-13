@@ -15,6 +15,7 @@ Notification::Application.routes.draw do
 
   namespace :administration do
     match 'manage' => 'home#index', :via => :get
+    match 'initialize_datas' => 'home#initialize_datas', :via => :post
   end
 
   resources :departments do
