@@ -11,6 +11,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # default avatar url
   def default_url
     ############TODO
+    'logo.png'
   end
 
   version :normal do
@@ -20,7 +21,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def extension_white_list
    %w(jpg jpeg gif png)
   end
- 
+
   def filename
    "#{model.id}.jpg"
   end
