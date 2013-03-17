@@ -1,15 +1,11 @@
 提问的问题:
 
 <ul>
-<% @user.asked_questions.each do |q| %>
-  <li><%= q.title %></li>
-<%end%>
+<%= render( :partial => 'questions/question' , :collection => @user.asked_questions )%>
 </ul>
 
 回答:
 
 <ul>
-<% @user.answers.each do |a| %>
-  <li><%= a.question.title %></li>
-<%end%>
+  <%= render( :partial => 'questions/question' , :collection => @user.answers.map{|an| an.question} )%>
 </ul>

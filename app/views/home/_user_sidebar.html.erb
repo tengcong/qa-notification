@@ -109,7 +109,7 @@
   </ul>
 
   <% if current_user && current_user.is_teacher? %>
-    <br>学僧列表:
+    <br>学生列表:
   <ul>
     <% current_user.get_my_students.each do |e|%>
       <li><%= e.email%> : <%= link_to e.name, e %></li>

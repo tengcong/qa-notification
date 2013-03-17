@@ -37,7 +37,7 @@
       <div class="span8">
         <div class="question-add-answer span7">
           <%= simple_form_for [@question, @question.answers.build]  do |f| %>
-            <input type='hidden' name='user_id' value='<%= @question.user.id%>'/>
+            <input type='hidden' name='user_id' value='<%= current_user.id%>'/>
             <%= f.input :content , :as => :text ,:placeholder=>"请在这里描述您的回答" ,:input_html => { :class => 'span7' ,:rows=>"10"} %>
             <%= f.button :submit, "发布" , :class=>"btn btn-primary"%>
           <% end %>
