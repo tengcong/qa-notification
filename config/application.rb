@@ -60,5 +60,11 @@ module Notification
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+
+    require File.expand_path('..', File.dirname(__FILE__)) + '/lib/init_helper.rb'
+    config.after_initialize do
+      ::InitHelper.run
+    end
   end
 end

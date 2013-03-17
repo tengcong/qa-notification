@@ -8,7 +8,7 @@ class HomeController < ApplicationController
     else
       @questions = Question.desc(:updated_at)
     end
-    @hot_courses = Course.hot_course
+    # @hot_courses = Course.hot_course
   end
 
 end

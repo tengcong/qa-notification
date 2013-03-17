@@ -5,7 +5,9 @@
 			<%= link_to question.title,question_path(question)  %>
 		</div>
 		<div class="question-details">
+      <% if question.course %>
 			<%= question.course.name %>  •  <%= question.user.name %>  •  14 分钟前   <% if question.answers.last %>•  最后回复来自<%= question.answers.last.question.user.name %> <% end %>
+    <% end %>
 		</div>
 	</div>
 	<div class="question-has-answer">

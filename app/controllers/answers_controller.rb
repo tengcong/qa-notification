@@ -1,8 +1,12 @@
 class AnswersController < ApplicationController
 
   def create
-    answer = Answer.new params[:answer]
-    answer.add_association_to_question params[:question_id]
+
+    question = Question.find(params[:question_id])
+    answer = question.answers.build(params[:answer])
+    answer.user = User.find(params[:user_id])
+
+    answer.save
 
     answer.create_related_notice
     redirect_to(:back)

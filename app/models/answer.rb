@@ -23,8 +23,10 @@ class Answer
   end
 
   def create_related_notice
-    notice = create_answer_notice answer_creater, find_related_question_owner
-    self.find_related_question_owner.add_new_notice notice
+    if answer_creater != find_related_question_owner
+      notice = create_answer_notice answer_creater, find_related_question_owner
+      self.find_related_question_owner.add_new_notice notice
+    end
   end
 
   private
