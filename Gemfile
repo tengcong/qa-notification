@@ -1,10 +1,12 @@
 source 'http://ruby.taobao.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.13'
 gem 'jquery-rails'
 gem "bson_ext", "= 1.6.4"
 gem "mongoid", "= 2.4.11"
 gem 'devise'
+gem "therubyracer"
+gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'coffee-script'
 gem 'carrierwave'
