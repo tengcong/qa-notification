@@ -1,17 +1,28 @@
-<div class="container">
+<div class="container" >
+  <%if flash[:success]%>
+    <div class="alert alert-success">
+      <span><%=flash[:success]%></span>
+      <button type='button' class="close" data-dismiss='close'>x</button>
+    </div>
+  <%end%>
 
-    <%# 全校最热门课程:
-    <%# <% @hot_courses.each do |hc| %>
-    <%#   <li><%= link_to hc.name, hc%></li>
-    <%# <% end %>
-    <%# 你的角色是
+  <div style='width: 70%; float:left'>
+    <%= render 'questions_list' %>
+    <%if current_user.is_teacher?%>
+      <div>
+        <h1>给学生发送邮件</h1>
+      </div>
 
-    <%# <% if current_user %>
-    <%# <%= current_user.role %>
-    <%# <% else %>
-    <%# 游客
-    <%# <%end %>
+      <%=simple_form_for Resource.new, :url => send_to_students_path do |f| %>
+        <%= f.input :subject, :label => '邮件标题'%>
+        <%= f.input :content, :as => 'text', :label => '邮件内容'%>
+        <%= f.submit '发送'%>
+      <% end %>
+    <%end%>
+  </div>
 
+  <div style='float:right; width: 25%' >
+    <%= render 'user_sidebar' %>
+  </div>
+</div>
 
-  <%= render 'questions_list' %>
-  <%= render 'user_sidebar' %>

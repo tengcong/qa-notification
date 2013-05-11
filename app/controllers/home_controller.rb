@@ -11,4 +11,10 @@ class HomeController < ApplicationController
     # @hot_courses = Course.hot_course
   end
 
+  def mail_to_students
+    flash[:success] = '发送成功！'
+    ResourcesMailer.send_to_students(current_user, params[:resource][:subject], params[:resource][:content])
+    redirect_to root_path
+  end
+
 end

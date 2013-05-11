@@ -51,7 +51,7 @@ class User
   end
 
   def set_courses
-    self.courses = self.major.courses
+    self.courses = self.major.courses if self.major
   end
 
   def set_self_info major_id
