@@ -48,6 +48,16 @@
       <div class="btn btn-success"><h1><a href="/users/sign_in">进入</a></h1></div>
     </div>
   </div>
+  <% else %>
+  <div class="container" >
+    
+      <%= render 'questions_list' %>
+    
+       
+
+    <div style='float:right; width: 25%' >
+      <%= render 'user_sidebar' %>
+    </div>
   <% end %>
   <%end%>
 
