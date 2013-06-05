@@ -1,3 +1,4 @@
+#encoding: utf-8
 class HomeController < ApplicationController
 
   def index
@@ -8,7 +9,7 @@ class HomeController < ApplicationController
     else
       @questions = Question.desc(:updated_at)
     end
-    
+
     render :layout => false
     # @hot_courses = Course.hot_course
   end
