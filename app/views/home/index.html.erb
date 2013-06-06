@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>济宁医学院-在线问答社区</title>
+  <title>医学化学教学辅导互动平台</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,7 +11,7 @@
 
 <div class="container">
   <%if user_signed_in? && current_user.is_teacher?%>
-  
+
   <div class="container" >
     <%if flash[:success]%>
       <div class="alert alert-success">
@@ -22,7 +22,7 @@
 
     <div style='width: 70%; float:left'>
       <%= render 'questions_list' %>
-    
+
         <div>
           <h1>给学生发送邮件</h1>
         </div>
@@ -32,7 +32,7 @@
           <%= f.input :content, :as => 'text', :label => '邮件内容'%>
           <%= f.submit '发送'%>
         <% end %>
-    
+
     </div>
 
     <div style='float:right; width: 25%' >
@@ -42,18 +42,17 @@
   <% else %>
   <% if !user_signed_in? %>
   <div class="container landing-page" >
-    <h1>济宁医学院问答平台</h1>
-    
+    <h1 class='big'>医学化学教学辅导互动平台</h1>
+
     <div class="btn-container">
-      <div class="btn btn-success"><h1><a href="/users/sign_in">进入</a></h1></div>
+      <div class="my-btn"><h1><a href="/users/sign_in">进入</a></h1></div>
     </div>
   </div>
   <% else %>
   <div class="container" >
-    
+
       <%= render 'questions_list' %>
-    
-       
+
 
     <div style='float:right; width: 25%' >
       <%= render 'user_sidebar' %>
