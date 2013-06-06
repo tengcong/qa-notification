@@ -64,8 +64,5 @@ module Notification
     config.assets.initialize_on_precompile = false
 
     require File.expand_path('..', File.dirname(__FILE__)) + '/lib/init_helper.rb'
-    config.after_initialize do
-      ::InitHelper.run
-    end
   end
 end
