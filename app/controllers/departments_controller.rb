@@ -1,5 +1,7 @@
 class DepartmentsController < ApplicationController
 
+  inherit_resources
+
   def index
     @departments=Department.all
   end

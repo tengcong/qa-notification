@@ -1,0 +1,11 @@
+<div class="container">
+  <span> 所属院系: <%= parent.name%> </span>
+  <br />
+  <br />
+  <br />
+
+  <%= simple_form_for [parent, resource] do |f|%>
+    <%= f.input :name %>
+    <%= f.submit "确认" %>
+  <% end %>
+</div>

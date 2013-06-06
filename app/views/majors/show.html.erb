@@ -4,6 +4,11 @@
       <% @courses.each do |c| %>
         <li><%= link_to c.name, course_path(c) %></li>
       <% end %>
+      <br />
+      <br />
+      <br />
+
+      <%= link_to "添加课程", new_department_major_course_path(@major.department, @major) %>
     </div>
   </div>
   <%= render 'home/user_sidebar' %>

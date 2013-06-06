@@ -4,9 +4,12 @@ class Course
 
   field :name, :type => String
   has_and_belongs_to_many :majors
+
   has_many :questions
 
   has_and_belongs_to_many :users
+
+  attr_accessible :name, :major_id, :department_id
 
   Q_MAP = """
   function(){

@@ -22,6 +22,7 @@ gem 'carrierwave-mongoid',:require => 'carrierwave/mongoid'
 gem 'mini_magick'
 gem 'simple_form'
 gem 'better_errors'
+gem 'inherited_resources'
 gem 'binding_of_caller'
 
 group :test do

@@ -1,10 +1,16 @@
 <div class="container">
   <div class="span8">
     <div class="span7 courses-list">
-       <% @department.majors.each do |c| %>
-                   <li><%= link_to c.name, major_path(c) %></li>
+      <% @department.majors.each do |m| %>
+         <li><%= link_to m.name, department_major_path(@department, m) %></li>
       <% end %>
+      <br />
+      <br />
+      <br />
+
+      <%= link_to "添加专业", new_department_major_path(@department) %>
     </div>
   </div>
+
   <%= render 'home/user_sidebar' %>
 </div>

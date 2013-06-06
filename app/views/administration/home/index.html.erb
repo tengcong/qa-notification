@@ -4,4 +4,16 @@
 <%= button_to 'set_student', set_student_user_path(e), :method => :put %>
 <% end %>
 
-<%= button_to 'init datas', administration_initialize_datas_path, :method => 'post'%>
+
+<ul>
+  <% @departments.each do |d| %>
+    <li><%= link_to d.name, department_path(d) %></li>
+  <% end %>
+</ul>
+<%= link_to "添加学院", new_department_path %>
+
+<br />
+<br />
+<br />
+
+<%= button_to '初始化数据(危险)', administration_initialize_datas_path, :method => 'post'%>
