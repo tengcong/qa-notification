@@ -41,12 +41,13 @@
         <td>
           <span class="label label-inverse">所属院系: <%= current_user.try(:department).try(:name)%></span>
         </td>
-
       </tr>
 
-      <tr>
-        <td><a href="#newQuestion" data-toggle="modal"><button class="btn btn-primary" type="button">Ask </button></a></td>
-      </tr>
+      <% if @show %>
+        <tr>
+          <td><a href="#newQuestion" data-toggle="modal"><button class="btn btn-primary" type="button">Ask </button></a></td>
+        </tr>
+      <%end%>
       </tbody>
     </table>
 
