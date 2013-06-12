@@ -1,3 +1,8 @@
-<%@questions.each do |question|%>
-  <li><%= question.title%></li>
+<% unless @questions.empty? %>
+
+  <%= render 'home/questions_list'%>
+
+
+<% else %>
+  暂无结果
 <%end%>
