@@ -14,8 +14,9 @@ class CoursesController < ApplicationController
         u.courses << c
       end
     else
-      c = Course.where(:name => params[:course][:name])
+      c = Course.where(:name => params[:course][:name]).first
       c.majors << Major.find(params[:major_id])
+      users = User.where(:major_id => params[:major_id])
       users.each do |u|
         u.courses << c
       end
