@@ -13,6 +13,12 @@ class CoursesController < ApplicationController
       users.each do |u|
         u.courses << c
       end
+    else
+      c = Course.where(:name => params[:course][:name])
+      c.majors << Major.find(params[:major_id])
+      users.each do |u|
+        u.courses << c
+      end
     end
     redirect_to root_path
   end
