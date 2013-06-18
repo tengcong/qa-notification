@@ -46,14 +46,14 @@
 
     <div class="btn-container">
       <div class="my-btn"><h1><a href="/users/sign_in">进入</a></h1></div>
+      <p class='info'>
+        注册必须以实名、实际邮箱注册
+      </p>
     </div>
   </div>
-  <% else %>
-  <div class="container" >
-
-      <%= render 'questions_list' %>
-
-
+<% else %>
+    <div class="container" >
+    <%= render 'questions_list' %>
     <div style='float:right; width: 25%' >
       <%= render 'user_sidebar' %>
     </div>

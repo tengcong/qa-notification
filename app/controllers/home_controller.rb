@@ -10,6 +10,10 @@ class HomeController < ApplicationController
       @questions = Question.desc(:updated_at)
     end
 
+    if current_user.is_admin?
+      @questions = Question.desc(:updated_at)
+    end
+
     render :layout => false
     # @hot_courses = Course.hot_course
   end

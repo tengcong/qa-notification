@@ -27,6 +27,10 @@
 		margin-top:15px;
 		margin-right:10px;
 	}
+
+  .remove-question{
+    @extend .question-has-answer;
+  }
 }
 
 .question:first-child{

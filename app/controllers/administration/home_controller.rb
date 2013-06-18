@@ -4,8 +4,8 @@ class Administration::HomeController < ApplicationController
 
   def index
     @to_be_teachers = User.where(:role => "to_be_teacher")
-
     @departments = Department.all
+    @questions = Question.all
   end
 
   def initialize_datas

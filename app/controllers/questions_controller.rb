@@ -23,6 +23,6 @@ class QuestionsController < ApplicationController
   def destroy
     question = Question.find params[:id]
     question.destroy
-    render :nothing => true
+    redirect_to root_path
   end
 end

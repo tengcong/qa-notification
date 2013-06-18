@@ -10,6 +10,11 @@
     <% end %>
 		</div>
 	</div>
+  <% if current_user.is_admin? %>
+    <div class="remove-question">
+      <%= link_to "删除", question_path(question), :method => "DELETE"%>
+    </div>
+  <% end %>
 	<div class="question-has-answer">
 		<span class="badge"><%= question.answers.count %></span>
 	</div>
